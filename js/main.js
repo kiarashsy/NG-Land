@@ -9,7 +9,7 @@ const team = [
   { name: "kiarash", role: "GOD", img: "assets/member7.jpg" },
   { name: "erfan", role: "33", img: "assets/member8.jpg" },
   { name: "Ehsan", role: "siah mehraboon", img: "assets/member9.jpg" },
-  
+
 ]
 
 /* ===== ELEMENTS ===== */
