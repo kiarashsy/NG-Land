@@ -6,7 +6,10 @@ const team = [
   { name: "bioz", role: "Backend", img: "assets/member4.jpg" },
   { name: "yazdan", role: "Marketing", img: "assets/member5.jpg" },
   { name: "sasan", role: "UI/UX", img: "assets/member6.jpg" },
-  { name: "kiarash", role: "GOD", img: "assets/member6.jpg" },
+  { name: "kiarash", role: "GOD", img: "assets/member7.jpg" },
+  { name: "erfan", role: "33", img: "assets/member8.jpg" },
+  { name: "Ehsan", role: "siah mehraboon", img: "assets/member9.jpg" },
+  
 ]
 
 /* ===== ELEMENTS ===== */
