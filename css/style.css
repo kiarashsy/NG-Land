@@ -256,3 +256,44 @@ body {
   .team-btn.prev { left: 2px; }
   .team-btn.next { right: 2px; }
 }
+/* ===== ANIMATED BACKGROUND ===== */
+.bg-animated {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    120deg,
+    #0a0a0a,
+    #0f172a,
+    #1e293b,
+    #0a0a0a
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 18s ease infinite;
+}
+
+/* حرکت نرم گرادینت */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.bg-animated::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08) 2.5px, transparent 3px),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.06) 3px, transparent 3.5px),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.07) 2px, transparent 2.8px),
+    radial-gradient(circle at 30% 80%, rgba(255,255,255,0.05) 3.5px, transparent 4px);
+
+  background-size: 140px 140px;
+  animation: floatDots 28s linear infinite;
+  opacity: 0.9;
+}
+@keyframes floatDots {
+  from { transform: translateY(0); }
+  to { transform: translateY(-140px); }
+}
