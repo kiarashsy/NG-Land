@@ -407,3 +407,87 @@ body {
   );
   transition: background 1s ease;
 }
+.header {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  left: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 20;
+}
+
+.login-btn {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  background: white;
+  color: black;
+  transform: scale(1.05);
+}
+.login-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.login-modal.active {
+  display: flex;
+}
+
+.login-box {
+  background: #111;
+  padding: 40px;
+  border-radius: 20px;
+  width: 320px;
+  text-align: center;
+  animation: fadeUp 0.5s ease;
+}
+
+.login-box h2 {
+  margin-bottom: 25px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  background: #1a1a1a;
+  border: none;
+  border-radius: 10px;
+  color: white;
+}
+
+.submit-login {
+  width: 100%;
+  padding: 12px;
+  background: white;
+  color: black;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

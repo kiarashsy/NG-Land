@@ -213,3 +213,15 @@ function typeText(el, text) {
 }
 const nameEl = members[index].querySelector('.member-name')
 typeText(nameEl, team[index % team.length].name)
+const loginBtn = document.querySelector('.login-btn')
+const loginModal = document.getElementById('loginModal')
+
+loginBtn.addEventListener('click', () => {
+  loginModal.classList.add('active')
+})
+
+loginModal.addEventListener('click', e => {
+  if (e.target === loginModal) {
+    loginModal.classList.remove('active')
+  }
+})

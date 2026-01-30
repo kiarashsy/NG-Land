@@ -8,6 +8,13 @@
 </head>
 <body>
 <div class="bg-animated"></div>
+<header class="header">
+  <div class="hero-logo">
+    <img src="assets/logo.png" alt="Logo">
+  </div>
+
+  <button class="login-btn">Login</button>
+</header>
 <header class="hero">
    <div class="hero-logo">
     <img src="assets/logo.png" alt="NGLAND Logo">
@@ -41,7 +48,16 @@
     <a href="https://github.com" target="_blank" class="social-icon">GitHub</a>
   </div>
 </footer>
+<div class="login-modal" id="loginModal">
+  <div class="login-box">
+    <h2>Login</h2>
 
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+
+    <button class="submit-login">Enter</button>
+  </div>
+</div>
 <script src="js/main.js"></script>
 </body>
 </html>
