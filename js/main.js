@@ -11,6 +11,15 @@ const team = [
   { name: "Ehsan", role: "siah mehraboon", img: "assets/member9.jpg" },
 
 ]
+const glowColors = [
+  'rgba(56,189,248,0.18)',  // Mersad
+  'rgba(168,85,247,0.18)',  // Hs
+  'rgba(34,197,94,0.18)',   // Jvad
+  'rgba(239,68,68,0.18)',   // bioz
+  'rgba(250,204,21,0.18)',  // yazdan
+  'rgba(14,165,233,0.18)',  // sasan
+  'rgba(244,114,182,0.18)', // kiarash
+]
 
 /* ===== ELEMENTS ===== */
 const track = document.querySelector(".team-track")
@@ -170,3 +179,37 @@ if (prevBtn && nextBtn) {
     startAuto()
   })
 }
+const bg = document.querySelector('.bg-animated')
+
+let mouseX = 0
+let mouseY = 0
+let currentX = 0
+let currentY = 0
+
+window.addEventListener('mousemove', e => {
+  mouseX = (e.clientX / window.innerWidth - 0.5) * 30
+  mouseY = (e.clientY / window.innerHeight - 0.5) * 30
+})
+
+function animateBg() {
+  currentX += (mouseX - currentX) * 0.05
+  currentY += (mouseY - currentY) * 0.05
+
+  bg.style.transform = `translate(${currentX}px, ${currentY}px)`
+
+  requestAnimationFrame(animateBg)
+}
+
+animateBg()
+function typeText(el, text) {
+  el.textContent = ""
+  let i = 0
+
+  const typing = setInterval(() => {
+    el.textContent += text[i]
+    i++
+    if (i >= text.length) clearInterval(typing)
+  }, 70)
+}
+const nameEl = members[index].querySelector('.member-name')
+typeText(nameEl, team[index % team.length].name)
