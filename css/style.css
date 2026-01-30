@@ -1,0 +1,183 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #0a0a0a;
+  color: white;
+}
+
+/* ===== HERO ===== */
+
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.logo {
+  font-size: 4rem;
+  opacity: 0;
+  transform: translateX(-100px);
+  animation: slideIn 1s forwards 0.3s;
+}
+
+.tagline {
+  font-size: 1.5rem;
+  color: #aaa;
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: slideDown 1s forwards 0.6s;
+}
+
+.scroll-btn {
+  margin-top: 30px;
+  padding: 12px 25px;
+  background: white;
+  color: black;
+  border-radius: 12px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideDown 1s forwards 0.9s;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.scroll-btn:hover {
+  transform: translateY(30px) scale(1.1);
+}
+
+/* ===== ANIMATIONS HERO ===== */
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== TEAM ===== */
+
+.team-section {
+  padding: 100px 0;
+  background: #111;
+  text-align: center;
+}
+
+.team-section h2 {
+  font-size: 2.5rem;
+}
+
+/* ===== SLIDER ===== */
+
+.team-slider {
+  overflow: hidden;
+  width: 100%;
+  margin-top: 60px;
+}
+
+.team-track {
+  display: flex;
+  align-items: center;
+  transition: transform 1s ease;
+}
+
+/* ===== MEMBER CARD ===== */
+
+.member {
+  min-width: 260px;
+  margin: 0 35px;
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 20px;
+
+  opacity: 0.25;
+  transform: scale(0.75);
+  transition: all 0.8s ease;
+}
+
+.member.active {
+  opacity: 1;
+  transform: scale(1.15);
+  background: #222;
+}
+
+.member img {
+  width: 120px;
+  border-radius: 50%;
+}
+
+.member h3 {
+  margin-top: 15px;
+}
+
+.member p {
+  color: #aaa;
+}
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 30px 0;
+  background: #0a0a0a;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.footer .socials {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer .social-icon {
+  color: #aaa;
+  text-decoration: none;
+  padding: 8px 12px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.footer .social-icon:hover {
+  color: white;
+  border-color: white;
+  transform: translateY(-3px);
+}
+.hero-logo img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: slideDownLogo 1s forwards 0.2s;
+}
+
+/* انیمیشن لوگو */
+@keyframes slideDownLogo {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
