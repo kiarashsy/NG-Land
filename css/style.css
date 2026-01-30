@@ -1,3 +1,4 @@
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +16,6 @@ body {
 }
 
 /* ===== HERO ===== */
-
 .hero {
   height: 100vh;
   display: flex;
@@ -26,6 +26,16 @@ body {
   text-align: center;
   overflow: hidden;
   position: relative;
+}
+
+/* لوگوی بالای سایت */
+.hero-logo img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: slideDownLogo 1s forwards 0.2s;
 }
 
 .logo {
@@ -55,14 +65,14 @@ body {
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
+  transition: transform 0.3s ease;
 }
 
 .scroll-btn:hover {
   transform: translateY(30px) scale(1.1);
 }
 
-/* ===== ANIMATIONS HERO ===== */
-
+/* ===== HERO ANIMATIONS ===== */
 @keyframes slideIn {
   to {
     opacity: 1;
@@ -77,8 +87,14 @@ body {
   }
 }
 
-/* ===== TEAM ===== */
+@keyframes slideDownLogo {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+/* ===== TEAM SECTION ===== */
 .team-section {
   padding: 100px 0;
   background: #111;
@@ -90,8 +106,8 @@ body {
 }
 
 /* ===== SLIDER ===== */
-
 .team-slider {
+  position: relative; /* ✅ برای درست شدن دکمه‌ها */
   overflow: hidden;
   width: 100%;
   margin-top: 60px;
@@ -100,21 +116,22 @@ body {
 .team-track {
   display: flex;
   align-items: center;
+  will-change: transform;
   transition: transform 1s ease;
 }
 
 /* ===== MEMBER CARD ===== */
-
 .member {
-  min-width: 260px;
-  margin: 0 35px;
+  flex: 0 0 260px;
+  margin: 0 25px;
   background: #1a1a1a;
   padding: 25px;
   border-radius: 20px;
+  text-align: center;
 
-  opacity: 0.25;
-  transform: scale(0.75);
-  transition: all 0.8s ease;
+  opacity: 0.4;
+  transform: scale(0.8);
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .member.active {
@@ -125,7 +142,9 @@ body {
 
 .member img {
   width: 120px;
+  height: 120px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .member h3 {
@@ -135,6 +154,57 @@ body {
 .member p {
   color: #aaa;
 }
+
+/* ===== SLIDER BUTTONS ===== */
+.team-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+
+  background: #000;         /* بکگراند سیاه */
+  border: 2px solid #fff;   /* حاشیه سفید */
+  color: #fff;              /* متن سفید */
+  font-size: 2.5rem;
+  padding: 12px 18px;
+  border-radius: 20%;       /* گوشه‌ها کاملا گرد */
+  cursor: pointer;
+
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.team-btn:hover {
+  transform: translateY(-50%) scale(1.15);
+  background: #111;          /* کمی روشن‌تر روی هاور */
+  border-color: #ffd700;     /* حاشیه طلایی روی هاور */
+  color: #ffd700;            /* متن طلایی روی هاور */
+}
+
+.team-btn.prev { left: 10px; }
+.team-btn.next { right: 10px; }
+
+/* موبایل تا 768px */
+@media (max-width: 768px) {
+  .team-btn {
+    font-size: 2rem;
+    padding: 8px 12px;
+  }
+
+  .team-btn.prev { left: 5px; }
+  .team-btn.next { right: 5px; }
+}
+
+/* موبایل کوچک تا 480px */
+@media (max-width: 480px) {
+  .team-btn {
+    font-size: 1.5rem;
+    padding: 6px 10px;
+  }
+
+  .team-btn.prev { left: 2px; }
+  .team-btn.next { right: 2px; }
+}
+
 /* ===== FOOTER ===== */
 .footer {
   text-align: center;
@@ -165,19 +235,24 @@ body {
   border-color: white;
   transform: translateY(-3px);
 }
-.hero-logo img {
-  width: 100px;
-  height: auto;
-  margin-bottom: 20px;
-  opacity: 0;
-  transform: translateY(-50px);
-  animation: slideDownLogo 1s forwards 0.2s;
+/* موبایل تا 768px */
+@media (max-width: 768px) {
+  .team-btn {
+    font-size: 2rem;
+    padding: 8px 12px;
+  }
+
+  .team-btn.prev { left: 5px; }
+  .team-btn.next { right: 5px; }
 }
 
-/* انیمیشن لوگو */
-@keyframes slideDownLogo {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+/* موبایل کوچک تا 480px */
+@media (max-width: 480px) {
+  .team-btn {
+    font-size: 1.5rem;
+    padding: 6px 10px;
   }
+
+  .team-btn.prev { left: 2px; }
+  .team-btn.next { right: 2px; }
 }
