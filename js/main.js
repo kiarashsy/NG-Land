@@ -1,7 +1,3 @@
-/* ===============================
-   TEAM SLIDER - NGLAND (CLEAN)
-================================ */
-
 /* ===== TEAM DATA ===== */
 const team = [
   { name: "Mersad", role: "Developer", img: "assets/member1.jpg" },
