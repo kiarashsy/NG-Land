@@ -1,30 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NGLAND</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+
+<!-- BACKGROUND -->
 <div class="bg-animated"></div>
+
+<!-- HEADER -->
 <header class="header">
   <div class="hero-logo">
-    <img src="assets/logo.png" alt="Logo">
+    <img src="assets/logo.png" alt="NGLAND Logo">
   </div>
 
-  <button class="login-btn">Login</button>
+  <div class="auth-buttons">
+    <button class="login-btn" id="openLogin">Login</button>
+    <button class="signup-btn" id="openSignup">Sign Up</button>
+  </div>
 </header>
+
+<!-- HERO -->
 <header class="hero">
-   <div class="hero-logo">
+  <div class="hero-logo">
     <img src="assets/logo.png" alt="NGLAND Logo">
   </div>
   <h1 class="logo-text">NGLAND</h1>
   <p class="tagline">Creative Digital Team</p>
-  <a href="#team" class="scroll-btn">Meet the Team ↓</a>  
+  <a href="#team" class="scroll-btn">Meet the Team ↓</a>
 </header>
 
-<!-- ===== TEAM SLIDER ===== -->
+<!-- TEAM SECTION -->
 <section class="team-section" id="team">
   <div class="site-glow"></div>
 
@@ -32,32 +41,54 @@
 
   <div class="team-slider">
     <button class="team-btn prev">‹</button>
-  <button class="team-btn next">›</button>
+    <button class="team-btn next">›</button>
+
     <div class="team-track">
-      <h3 class="member-name">Mersad</h3>
-      <!-- اعضا با JS اضافه می‌شوند -->
+      <!-- members added by JS -->
     </div>
   </div>
 </section>
-<!-- ===== FOOTER ===== -->
+
+<!-- FOOTER -->
 <footer class="footer">
   <p>© 2026 NGLAND Team. All rights reserved.</p>
   <div class="socials">
-    <a href="https://instagram.com" target="_blank" class="social-icon">Instagram</a>
-    <a href="https://discord.com" target="_blank" class="social-icon">Discord</a>
-    <a href="https://github.com" target="_blank" class="social-icon">GitHub</a>
+    <a href="https://instagram.com" target="_blank">Instagram</a>
+    <a href="https://discord.com" target="_blank">Discord</a>
+    <a href="https://github.com" target="_blank">GitHub</a>
   </div>
 </footer>
+
+<!-- LOGIN / SIGNUP MODAL -->
 <div class="login-modal" id="loginModal">
   <div class="login-box">
-    <h2>Login</h2>
 
-    <input type="text" placeholder="Username">
-    <input type="password" placeholder="Password">
+    <h2 id="formTitle">Login</h2>
 
-    <button class="submit-login">Enter</button>
+    <!-- LOGIN FORM -->
+    <div class="form login-form active">
+      <input type="text" id="loginUser" placeholder="Username">
+      <input type="password" id="loginPass" placeholder="Password">
+      <button id="loginSubmit">Login</button>
+    </div>
+
+    <!-- SIGN UP FORM -->
+    <div class="form signup-form">
+      <input type="text" id="signupUser" placeholder="Username">
+      <input type="email" id="signupEmail" placeholder="Email">
+      <input type="password" id="signupPass" placeholder="Password">
+      <button id="signupSubmit">Create Account</button>
+    </div>
+
+    <p class="switch-text">
+      <span id="switchText">Don’t have an account?</span>
+      <a id="switchForm">Sign Up</a>
+    </p>
+
   </div>
 </div>
+  
+<!-- JS -->
 <script src="js/main.js"></script>
 </body>
 </html>

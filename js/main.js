@@ -211,8 +211,8 @@ function typeText(el, text) {
     if (i >= text.length) clearInterval(typing)
   }, 70)
 }
-const nameEl = members[index].querySelector('.member-name')
-typeText(nameEl, team[index % team.length].name)
+//const nameEl = members[index].querySelector('.member-name')
+//typeText(nameEl, team[index % team.length].name)
 const loginBtn = document.querySelector('.login-btn')
 const loginModal = document.getElementById('loginModal')
 
@@ -223,5 +223,78 @@ loginBtn.addEventListener('click', () => {
 loginModal.addEventListener('click', e => {
   if (e.target === loginModal) {
     loginModal.classList.remove('active')
+  }
+})
+const openLogin = document.getElementById("openLogin")
+const openSignup = document.getElementById("openSignup")
+const modal = document.getElementById("loginModal")
+
+const loginForm = document.querySelector(".login-form")
+const signupForm = document.querySelector(".signup-form")
+const switchForm = document.getElementById("switchForm")
+const formTitle = document.getElementById("formTitle")
+const switchText = document.getElementById("switchText")
+
+function showLogin() {
+  loginForm.classList.add("active")
+  signupForm.classList.remove("active")
+  formTitle.textContent = "Login"
+  switchText.textContent = "Don’t have an account?"
+  switchForm.textContent = "Sign Up"
+}
+
+function showSignup() {
+  signupForm.classList.add("active")
+  loginForm.classList.remove("active")
+  formTitle.textContent = "Sign Up"
+  switchText.textContent = "Already have an account?"
+  switchForm.textContent = "Login"
+}
+
+openLogin.addEventListener("click", () => {
+  modal.classList.add("active")
+  showLogin()
+})
+
+openSignup.addEventListener("click", () => {
+  modal.classList.add("active")
+  showSignup()
+})
+
+switchForm.addEventListener("click", () => {
+  signupForm.classList.contains("active") ? showLogin() : showSignup()
+})
+/* ===== FAKE AUTH (FRONT ONLY) ===== */
+
+const loginSubmit = document.getElementById("loginSubmit")
+
+loginSubmit.addEventListener("click", () => {
+  const username = document.getElementById("loginUser").value
+  const password = document.getElementById("loginPass").value
+
+  // یوزر تستی
+  const TEST_USER = {
+    username: "admin",
+    password: "1234",
+    role: "admin"
+  }
+
+  if (
+    username === TEST_USER.username &&
+    password === TEST_USER.password
+  ) {
+    // ذخیره اطلاعات کاربر
+    localStorage.setItem(
+      "currentUser",
+      JSON.stringify({
+        username: TEST_USER.username,
+        role: TEST_USER.role
+      })
+    )
+
+    // رفتن به داشبورد
+    window.location.href = "dashboard/index.html"
+  } else {
+    alert("Username or Password is incorrect ❌")
   }
 })

@@ -491,3 +491,95 @@ body {
     transform: translateY(0);
   }
 }
+.auth-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.signup-btn {
+  background: white;
+  color: black;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.form {
+  display: none;
+}
+
+.form.active {
+  display: block;
+}
+
+.switch-text {
+  margin-top: 15px;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.switch-text a {
+  color: white;
+  cursor: pointer;
+  margin-left: 5px;
+}
+/* ===== FOOTER SOCIAL BUTTONS ===== */
+.footer .socials {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.footer .social-icon {
+  color: #aaa;
+  text-decoration: none;
+  padding: 10px 16px;
+  border: 2px solid #aaa;
+  border-radius: 25px; /* گرد و مدرن */
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.footer .social-icon:hover {
+  color: white;
+  border-color: white;
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* ===== LOGIN / SIGNUP BUTTONS ===== */
+.login-box .form button {
+  width: 100%;
+  padding: 12px 0;
+  margin-top: 12px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #06b6d4, #3b82f6);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-box .form button:hover {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  transform: scale(1.05);
+}
+
+/* ===== SWITCH LINK ===== */
+.switch-text a {
+  cursor: pointer;
+  color: #3b82f6;
+  font-weight: bold;
+  margin-left: 5px;
+  transition: all 0.3s ease;
+}
+
+.switch-text a:hover {
+  color: #06b6d4;
+  text-decoration: underline;
+}
+  
