@@ -1,3 +1,2 @@
 # NG-Land
-NGG Land
-hello 
+NG Land
