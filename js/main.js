@@ -2,8 +2,8 @@
 const team = [
   { name: "Mersad", role: "Developer", img: "assets/member1.jpg" },
   { name: "Hs", role: "Designer", img: "assets/member2.jpg" },
-  { name: "Jvad", role: "Manager", img: "assets/member3.jpg" },
-  { name: "bioz", role: "Backend", img: "assets/member4.jpg" },
+  { name: "Javad", role: "Manager", img: "assets/member3.jpg" },
+  { name: "biozed", role: "Backend", img: "assets/member4.jpg" },
   { name: "yazdan", role: "Marketing", img: "assets/member5.jpg" },
   { name: "sasan", role: "UI/UX", img: "assets/member6.jpg" },
   { name: "kiarash", role: "GOD", img: "assets/member7.jpg" },
