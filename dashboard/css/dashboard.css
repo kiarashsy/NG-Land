@@ -1,224 +1,100 @@
-/* =========================
-   DASHBOARD CSS - CLEANED
-========================= */
-
-/* ===== GLOBAL ===== */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  display: flex;
-  min-height: 100vh;
-  background: #0a0a0a;
-  color: white;
-  transition: background 0.3s, color 0.3s;
-  overflow: hidden;
-}
-
-body.dark {
-  background: #111;
+  background: #0f0f0f;
   color: #fff;
+  display: flex;
+  height: 100vh;
 }
 
-/* ===== SIDEBAR ===== */
+/* Sidebar */
 .sidebar {
   width: 220px;
   background: #111;
-  color: white;
   padding: 20px;
-  flex-shrink: 0;
-  transition: background 0.3s, left 0.3s;
 }
 
-body.dark .sidebar { background: #000; }
-
-.sidebar .brand {
-  font-size: 1.8rem;
-  font-weight: bold;
+.logo {
   margin-bottom: 30px;
 }
 
-.sidebar .menu {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar .menu li {
-  padding: 12px 10px;
-  margin-bottom: 10px;
+.sidebar nav a {
+  display: block;
+  padding: 10px;
+  margin-bottom: 8px;
+  color: #bbb;
   cursor: pointer;
   border-radius: 8px;
-  transition: background 0.3s;
 }
 
-.sidebar .menu li.active,
-.sidebar .menu li:hover {
+.sidebar nav a.active,
+.sidebar nav a:hover {
   background: #222;
+  color: #fff;
 }
 
-/* SIDEBAR MOBILE */
-@media (max-width: 768px) {
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: -220px;
-    height: 100%;
-    z-index: 20;
-  }
-  .sidebar.open {
-    left: 0;
-  }
-}
-
-/* ===== MAIN ===== */
+/* Main */
 .main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  transition: background 0.3s;
-  padding-bottom: 30px;
 }
 
-/* ===== TOPBAR ===== */
+/* Topbar */
 .topbar {
   padding: 15px 20px;
   background: #111;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background 0.3s;
-  z-index: 15;
-  position: relative;
 }
 
-body.dark .topbar { background: #000; }
-
-/* راست topbar */
-.topbar-right {
+.topbar-actions {
   display: flex;
-  align-items: center;
   gap: 10px;
 }
 
-/* SEARCH INPUT */
-#searchUser {
+.topbar input {
   padding: 6px 10px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-  background: #222;
-  color: #fff;
-  width: 180px;
-  font-size: 0.9rem;
-  transition: background 0.3s;
-}
-
-body.dark #searchUser { background: #222; color: #fff; }
-
-/* THEME TOGGLE */
-#toggleTheme {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
+  border-radius: 6px;
   border: none;
   background: #222;
   color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: all 0.3s;
 }
 
-#toggleTheme:hover { background: #333; }
-
-/* LOGOUT BUTTON */
-#logoutBtn {
+.topbar button {
+  background: #222;
+  border: none;
+  color: #fff;
   padding: 6px 12px;
-  border-radius: 8px;
-  border: none;
-  background: #222;
-  color: #fff;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s;
 }
 
-#logoutBtn:hover { background: #333; }
+.topbar button:hover {
+  background: #333;
+}
 
-/* ===== CARDS ===== */
-.cards {
-  display: flex;
-  gap: 20px;
+/* Content */
+.content {
   padding: 20px;
-  flex-wrap: wrap;
+}
+
+.cards {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
 }
 
 .card {
-  background: #222;
+  background: #181818;
   padding: 20px;
   border-radius: 12px;
-  flex: 1;
-  min-width: 200px;
   text-align: center;
-  opacity: 0;
-  transform: translateY(20px) scale(0.95);
-  animation: fadeInUp 0.6s forwards;
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-}
-
-body.dark .card { background: #222; }
-
-.card:hover {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-}
-
-/* ===== TABLE ===== */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px;
-  background: #111;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-table th, table td {
-  padding: 12px 15px;
-  border-bottom: 1px solid #333;
-  text-align: left;
-}
-
-table th { background: #222; }
-
-table tr:hover {
-  background: #222;
-  cursor: pointer;
-}
-
-body.dark table th,
-body.dark table tr:hover { background: #222; color: #fff; }
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .cards { flex-direction: column; }
-}
-
-@media (max-width: 768px) {
-  #searchUser, #toggleTheme, #logoutBtn { margin: 0 5px; font-size: 0.85rem; }
-  #searchUser { width: 120px; }
 }

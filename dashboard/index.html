@@ -2,60 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - NGLAND</title>
-  <link rel="stylesheet" href="css/dashboard.css">
+  <title>NGLAND Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<header class="topbar">
-  <div>Welcome, <span id="userName">Admin</span></div>
-  <div class="topbar-right">
-    <input type="text" id="searchUser" placeholder="Search users...">
-    <button id="toggleTheme">🌙</button>
-    <button id="logoutBtn">Logout</button>
-  </div>
-</header>
+<body class="dark">
 
-<body>
-  <!-- SIDEBAR -->
+  <!-- Sidebar -->
   <aside class="sidebar">
-    <div class="brand">NGLAND</div>
-    <ul class="menu">
-      <li class="active">Home</li>
-      <li>Users</li>
-      <li>Teams</li>
-      <li>Settings</li>
-    </ul>
+    <h2 class="logo">NGLAND</h2>
+    <nav>
+      <a class="active">Dashboard</a>
+      <a>Users</a>
+      <a>Teams</a>
+      <a>Settings</a>
+    </nav>
   </aside>
 
-  <!-- MAIN CONTENT -->
+  <!-- Main -->
   <div class="main">
+    <!-- Topbar -->
     <header class="topbar">
-      <div>Welcome, <span id="userName">Admin</span></div>
-      <button id="logoutBtn">Logout</button>
+      <span>Welcome, Admin</span>
+      <div class="topbar-actions">
+        <input type="text" placeholder="Search..." />
+        <button id="themeToggle">🌙</button>
+        <button class="logout">Logout</button>
+      </div>
     </header>
 
+    <!-- Content -->
     <section class="content">
-      <h2>Dashboard</h2>
-      <div class="cards">
-        <div class="card">Total Users: 10</div>
-        <div class="card">Active Teams: 3</div>
-        <div class="card">Pending Tasks: 5</div>
-      </div>
+      <h1>Dashboard</h1>
 
-      <div class="tables">
-        <h3>Users List</h3>
-        <table>
-          <thead>
-            <tr><th>Username</th><th>Role</th><th>Status</th></tr>
-          </thead>
-          <tbody id="usersTable">
-            <!-- Rows با JS اضافه می‌شوند -->
-          </tbody>
-        </table>
+      <div class="cards">
+        <div class="card">Total Users<br><strong>10</strong></div>
+        <div class="card">Active Teams<br><strong>3</strong></div>
+        <div class="card">Pending Tasks<br><strong>5</strong></div>
       </div>
     </section>
   </div>
 
-  <script src="js/dashboard.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
