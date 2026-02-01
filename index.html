@@ -17,11 +17,11 @@
     <img src="assets/logo.png" alt="NGLAND Logo">
   </div>
 
-  <div class="auth-buttons">
-    <button class="login-btn" id="openLogin">Login</button>
-    <button class="signup-btn" id="openSignup">Sign Up</button>
-  </div>
+  <!-- React روی این div دکمه Login را می‌سازد -->
+  <div id="auth-buttons-react"></div>
 </header>
+
+
 
 <!-- HERO -->
 <header class="hero">
@@ -36,16 +36,11 @@
 <!-- TEAM SECTION -->
 <section class="team-section" id="team">
   <div class="site-glow"></div>
-
   <h2>Our Team</h2>
-
   <div class="team-slider">
     <button class="team-btn prev">‹</button>
     <button class="team-btn next">›</button>
-
-    <div class="team-track">
-      <!-- members added by JS -->
-    </div>
+    <div class="team-track"></div>
   </div>
 </section>
 
@@ -59,36 +54,15 @@
   </div>
 </footer>
 
-<!-- LOGIN / SIGNUP MODAL -->
-<div class="login-modal" id="loginModal">
-  <div class="login-box">
+<!-- React Mount Point برای Login / Dashboard -->
+<div id="dashboard-root"></div>
 
-    <h2 id="formTitle">Login</h2>
+<!-- React Mount Point برای Login / Dashboard -->
+<div id="dashboard-root"></div>
 
-    <!-- LOGIN FORM -->
-    <div class="form login-form active">
-      <input type="text" id="loginUser" placeholder="Username">
-      <input type="password" id="loginPass" placeholder="Password">
-      <button id="loginSubmit">Login</button>
-    </div>
-
-    <!-- SIGN UP FORM -->
-    <div class="form signup-form">
-      <input type="text" id="signupUser" placeholder="Username">
-      <input type="email" id="signupEmail" placeholder="Email">
-      <input type="password" id="signupPass" placeholder="Password">
-      <button id="signupSubmit">Create Account</button>
-    </div>
-
-    <p class="switch-text">
-      <span id="switchText">Don’t have an account?</span>
-      <a id="switchForm">Sign Up</a>
-    </p>
-
-  </div>
-</div>
-  
-<!-- JS -->
+<!-- React Bundle -->
+<script src="dashboard/src/index.js"></script>
 <script src="js/main.js"></script>
+
 </body>
 </html>

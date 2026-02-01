@@ -1,0 +1,59 @@
+body {
+  font-family: Tahoma, sans-serif;
+  background-color: #f3f3f3;
+  margin: 0;
+  padding: 0;
+}
+
+/* مودال */
+.login-modal {
+  position: fixed;
+  top:0; left:0; right:0; bottom:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: rgba(0,0,0,0.7);
+  z-index:9999;
+}
+
+.login-box {
+  background:#fff;
+  padding:30px;
+  border-radius:10px;
+  width:300px;
+}
+
+.login-box input, .login-box select, .login-box button {
+  display:block;
+  width:100%;
+  margin-bottom:10px;
+  padding:8px;
+  border-radius:5px;
+  border:1px solid #ccc;
+}
+
+button {
+  background-color:#7b5fcf;
+  color:white;
+  border:none;
+  cursor:pointer;
+}
+
+button:hover { background-color:#6243a5; }
+
+/* داشبورد */
+.dashboard {
+  max-width:800px;
+  margin:20px auto;
+  padding:20px;
+}
+
+.dashboard-card {
+  background:#fff;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:15px;
+  box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h1,h2 { color:#7b5fcf; text-align:center; }

@@ -266,35 +266,31 @@ switchForm.addEventListener("click", () => {
 })
 /* ===== FAKE AUTH (FRONT ONLY) ===== */
 
-const loginSubmit = document.getElementById("loginSubmit")
+//const loginSubmit = document.getElementById("loginSubmit")
 
-loginSubmit.addEventListener("click", () => {
-  const username = document.getElementById("loginUser").value
-  const password = document.getElementById("loginPass").value
+//loginSubmit.addEventListener("click", () => {
+  //const username = document.getElementById("loginUser").value
+  // password = document.getElementById("loginPass").value
 
   // یوزر تستی
-  const TEST_USER = {
-    username: "admin",
-    password: "1234",
-    role: "admin"
-  }
+  //const TEST_USER = {
+    //username: "admin",
+    //password: "1234",
+   // role: "admin"
+  //}
 
-  if (
-    username === TEST_USER.username &&
-    password === TEST_USER.password
-  ) {
-    // ذخیره اطلاعات کاربر
-    localStorage.setItem(
-      "currentUser",
-      JSON.stringify({
-        username: TEST_USER.username,
-        role: TEST_USER.role
-      })
-    )
+  //if (username === TEST_USER.username && password === TEST_USER.password) {
+    // React باید این کاربر را نمایش دهد
+    //localStorage.setItem(
+      //"currentUser",
+      //JSON.stringify(TEST_USER)
+    //)
 
-    // رفتن به داشبورد
-    window.location.href = "dashboard/index.html"
-  } else {
-    alert("Username or Password is incorrect ❌")
-  }
-})
+    // دیگر نیازی به window.location.href نیست
+    // به جای آن باید React در همان صفحه داشبورد را mount کند
+    //document.getElementById("dashboard-root").style.display = "block"
+    // یا در React: root.render(<App />) که login را تشخیص دهد
+  //} else {
+    //alert("Username or Password is incorrect ❌")
+  //}
+//})
