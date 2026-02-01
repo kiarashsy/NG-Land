@@ -62,6 +62,8 @@ function App() {
           <button className="login-btn" onClick={() => setModalOpen(true)}>Login</button>
         </div>
       )}
+        console.log("Current User:", currentUser);
+        console.log("Modal Open:", modalOpen);  
 
       {modalOpen && <LoginModal onLogin={handleLogin} onClose={() => setModalOpen(false)} />}
 
