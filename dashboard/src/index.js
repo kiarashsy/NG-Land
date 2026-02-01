@@ -9,6 +9,11 @@ const Input = (props) => (
   <input {...props} style={{ background: '#202225', color: '#dcddde', border: '1px solid #18191c', padding: '12px', borderRadius: '6px', outline: 'none', width: '100%', boxSizing: 'border-box', marginBottom: '10px', ...props.style }} />
 );
 
+// کامپوننت انتخابگر رول جدید
+const Select = (props) => (
+  <select {...props} style={{ background: '#202225', color: '#dcddde', border: '1px solid #18191c', padding: '12px', borderRadius: '6px', outline: 'none', width: '100%', marginBottom: '10px', cursor: 'pointer' }}>{props.children}</select>
+);
+
 const Button = ({ children, primary, danger, ...props }) => (
   <button {...props} style={{
     background: primary ? '#5865f2' : (danger ? '#ed4245' : '#4f545c'),
@@ -76,6 +81,7 @@ function App() {
   const [newU, setNewU] = useState("");
   const [newP, setNewP] = useState("");
   const [newR, setNewR] = useState("user");
+  const [editingUserIndex, setEditingUserIndex] = useState(null); // برای ویرایش یوزر
 
   useEffect(() => {
     const mainSections = document.querySelectorAll('.hero, .team-section, .footer, .header:not(:has(#auth-buttons-react))');
@@ -99,6 +105,44 @@ function App() {
 
     if (savedTeam) setTeam(JSON.parse(savedTeam));
   }, []);
+
+  // تابع ذخیره کاربر (جدید یا ویرایش شده)
+  const handleSaveUser = () => {
+    if(!newU || !newP) return alert("Fill all fields!");
+    let updatedUsers;
+    
+    if (editingUserIndex !== null) {
+      // حالت ویرایش یوزر
+      updatedUsers = users.map((u, index) => 
+        index === editingUserIndex ? { username: newU, password: newP, role: newR } : u
+      );
+      setEditingUserIndex(null);
+    } else {
+      // حالت یوزر جدید
+      updatedUsers = [...users, { username: newU, password: newP, role: newR }];
+    }
+    
+    setUsers(updatedUsers);
+    localStorage.setItem("usersList", JSON.stringify(updatedUsers));
+    setNewU(""); setNewP(""); setNewR("user");
+  };
+
+  // تابع شروع ویرایش کاربر
+  const startEditUser = (index) => {
+    const u = users[index];
+    setNewU(u.username);
+    setNewP(u.password);
+    setNewR(u.role);
+    setEditingUserIndex(index);
+  };
+
+  // تابع حذف کاربر
+  const deleteUser = (index) => {
+    if (users[index].username === 'admin') return alert("Cannot delete main admin!");
+    const updated = users.filter((_, i) => i !== index);
+    setUsers(updated);
+    localStorage.setItem("usersList", JSON.stringify(updated));
+  };
 
   const handleSaveMember = () => {
     if(!mName || !mRole) return alert("Fill Name and Role!");
@@ -152,23 +196,37 @@ function App() {
                 <h1>Dashboard</h1>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginTop: '20px' }}>
                   <Card>
-                    <h3 style={{color: 'white'}}>Create New User</h3>
+                    <h3 style={{color: 'white'}}>{editingUserIndex !== null ? "✏️ Edit User" : "➕ Create New User"}</h3>
                     <Input placeholder="Username" value={newU} onChange={e => setNewU(e.target.value)} />
                     <Input placeholder="Password" type="password" value={newP} onChange={e => setNewP(e.target.value)} />
-                    <Button primary style={{width: '100%'}} onClick={() => {
-                      const updated = [...users, {username: newU, password: newP, role: newR}];
-                      setUsers(updated);
-                      localStorage.setItem("usersList", JSON.stringify(updated));
-                      setNewU(""); setNewP("");
-                    }}>Create User</Button>
+                    
+                    <label style={{color:'#8e9297', fontSize:'12px', display:'block', marginBottom:'5px'}}>Assign Role:</label>
+                    <Select value={newR} onChange={e => setNewR(e.target.value)}>
+                        <option value="user" style={{background:'#2f3136'}}>User (Standard)</option>
+                        <option value="admin" style={{background:'#2f3136'}}>Admin (Full Access)</option>
+                    </Select>
+
+                    <Button primary style={{width: '100%', marginTop:'10px'}} onClick={handleSaveUser}>
+                        {editingUserIndex !== null ? "Save Changes" : "Create User"}
+                    </Button>
+                    {editingUserIndex !== null && (
+                        <Button style={{width:'100%', marginTop:'10px', background:'transparent'}} onClick={() => {setEditingUserIndex(null); setNewU(""); setNewP("");}}>Cancel</Button>
+                    )}
                   </Card>
+                  
                   <Card>
                     <h3 style={{color: 'white'}}>System Users</h3>
-                    {users.map(u => (
-                      <div key={u.username} style={{display: 'flex', justifyContent: 'space-between', padding: '12px 0', borderBottom: '1px solid #444'}}>
-                        <span>{u.username} <small style={{color:'#72767d'}}>({u.role})</small></span>
-                      </div>
-                    ))}
+                    <div style={{maxHeight:'400px', overflowY:'auto'}}>
+                        {users.map((u, index) => (
+                        <div key={index} style={{display: 'flex', justifyContent: 'space-between', alignItems:'center', padding: '12px 0', borderBottom: '1px solid #444'}}>
+                            <span>{u.username} <small style={{color:'#5865f2', marginLeft:'5px'}}>({u.role})</small></span>
+                            <div style={{display:'flex', gap:'5px'}}>
+                                <Button style={{padding:'4px 8px', fontSize:'11px'}} onClick={() => startEditUser(index)}>Edit</Button>
+                                <Button danger style={{padding:'4px 8px', fontSize:'11px'}} onClick={() => deleteUser(index)}>Delete</Button>
+                            </div>
+                        </div>
+                        ))}
+                    </div>
                   </Card>
                 </div>
               </div>
