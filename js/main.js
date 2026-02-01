@@ -1,5 +1,7 @@
-/* ===== TEAM DATA ===== */
-const team = [
+/* ===== TEAM DATA (هوشمند شده) ===== */
+// این تیکه کد اول چک می‌کنه اگه دیتایی از ادمین بود اونو جایگزین کنه
+const savedTeam = localStorage.getItem("teamData");
+const team = (savedTeam && JSON.parse(savedTeam).length > 0) ? JSON.parse(savedTeam) : [
   { name: "Mersad", role: "Developer", img: "assets/member1.jpg" },
   { name: "Hs", role: "Designer", img: "assets/member2.jpg" },
   { name: "Javad", role: "Manager", img: "assets/member3.jpg" },
@@ -9,8 +11,8 @@ const team = [
   { name: "kiarash", role: "GOD", img: "assets/member7.jpg" },
   { name: "erfan", role: "33", img: "assets/member8.jpg" },
   { name: "Ehsan", role: "siah mehraboon", img: "assets/member9.jpg" },
+];
 
-]
 const glowColors = [
   'rgba(56,189,248,0.18)',  // Mersad
   'rgba(168,85,247,0.18)',  // Hs
@@ -33,11 +35,14 @@ if (!track || !teamSection) {
 
 /* ===== CREATE LOOP ITEMS ===== */
 const items = [...team, ...team, ...team]
+// اضافه کردن این خط برای اینکه وقتی ادمین چیزی رو عوض می‌کنه، اسلایدر قبلی پاک بشه و جدید جایگزین بشه
+if(track) track.innerHTML = ""; 
+
 items.forEach(m => {
   const el = document.createElement("div")
   el.className = "member"
   el.innerHTML = `
-    <img src="${m.img}">
+    <img src="${m.img}" onerror="this.src='https://via.placeholder.com/150'">
     <h3>${m.name}</h3>
     <p>${m.role}</p>
   `
@@ -56,6 +61,7 @@ let currentTranslate = 0
 
 /* ===== POSITION ===== */
 function updateSlider(animate = true) {
+  if(!members[index]) return;
   members.forEach(m => m.classList.remove("active"))
   members[index].classList.add("active")
 
@@ -69,7 +75,8 @@ function updateSlider(animate = true) {
 }
 
 /* ===== INIT ===== */
-updateSlider(false)
+// یه تاخیر کوچولو دادم که مطمئن بشیم همه‌چی لود شده
+setTimeout(() => updateSlider(false), 50);
 
 /* ===== AUTO SLIDE ===== */
 function startAuto() {
@@ -93,8 +100,10 @@ function stopAuto() {
 startAuto()
 
 /* ===== HOVER PAUSE ===== */
-teamSection.addEventListener("mouseenter", stopAuto)
-teamSection.addEventListener("mouseleave", startAuto)
+if(teamSection) {
+    teamSection.addEventListener("mouseenter", stopAuto)
+    teamSection.addEventListener("mouseleave", startAuto)
+}
 
 /* ===== DRAG ===== */
 function getCurrentTranslate() {
@@ -179,29 +188,32 @@ if (prevBtn && nextBtn) {
     startAuto()
   })
 }
+
 const bg = document.querySelector('.bg-animated')
 
-let mouseX = 0
-let mouseY = 0
-let currentX = 0
-let currentY = 0
+if(bg) {
+    let mouseX = 0
+    let mouseY = 0
+    let currentX = 0
+    let currentY = 0
 
-window.addEventListener('mousemove', e => {
-  mouseX = (e.clientX / window.innerWidth - 0.5) * 30
-  mouseY = (e.clientY / window.innerHeight - 0.5) * 30
-})
+    window.addEventListener('mousemove', e => {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 30
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 30
+    })
 
-function animateBg() {
-  currentX += (mouseX - currentX) * 0.05
-  currentY += (mouseY - currentY) * 0.05
+    function animateBg() {
+      currentX += (mouseX - currentX) * 0.05
+      currentY += (mouseY - currentY) * 0.05
+      bg.style.transform = `translate(${currentX}px, ${currentY}px)`
+      requestAnimationFrame(animateBg)
+    }
 
-  bg.style.transform = `translate(${currentX}px, ${currentY}px)`
-
-  requestAnimationFrame(animateBg)
+    animateBg()
 }
 
-animateBg()
 function typeText(el, text) {
+  if(!el) return;
   el.textContent = ""
   let i = 0
 
@@ -211,20 +223,22 @@ function typeText(el, text) {
     if (i >= text.length) clearInterval(typing)
   }, 70)
 }
-//const nameEl = members[index].querySelector('.member-name')
-//typeText(nameEl, team[index % team.length].name)
+
 const loginBtn = document.querySelector('.login-btn')
 const loginModal = document.getElementById('loginModal')
 
-loginBtn.addEventListener('click', () => {
-  loginModal.classList.add('active')
-})
+if(loginBtn && loginModal) {
+    loginBtn.addEventListener('click', () => {
+      loginModal.classList.add('active')
+    })
 
-loginModal.addEventListener('click', e => {
-  if (e.target === loginModal) {
-    loginModal.classList.remove('active')
-  }
-})
+    loginModal.addEventListener('click', e => {
+      if (e.target === loginModal) {
+        loginModal.classList.remove('active')
+      }
+    })
+}
+
 const openLogin = document.getElementById("openLogin")
 const openSignup = document.getElementById("openSignup")
 const modal = document.getElementById("loginModal")
@@ -235,7 +249,22 @@ const switchForm = document.getElementById("switchForm")
 const formTitle = document.getElementById("formTitle")
 const switchText = document.getElementById("switchText")
 
+if(openLogin) {
+    openLogin.addEventListener("click", () => {
+      modal.classList.add("active")
+      showLogin()
+    })
+}
+
+if(openSignup) {
+    openSignup.addEventListener("click", () => {
+      modal.classList.add("active")
+      showSignup()
+    })
+}
+
 function showLogin() {
+  if(!loginForm) return;
   loginForm.classList.add("active")
   signupForm.classList.remove("active")
   formTitle.textContent = "Login"
@@ -244,6 +273,7 @@ function showLogin() {
 }
 
 function showSignup() {
+  if(!signupForm) return;
   signupForm.classList.add("active")
   loginForm.classList.remove("active")
   formTitle.textContent = "Sign Up"
@@ -251,47 +281,8 @@ function showSignup() {
   switchForm.textContent = "Login"
 }
 
-openLogin.addEventListener("click", () => {
-  modal.classList.add("active")
-  showLogin()
-})
-
-openSignup.addEventListener("click", () => {
-  modal.classList.add("active")
-  showSignup()
-})
-
-switchForm.addEventListener("click", () => {
-  signupForm.classList.contains("active") ? showLogin() : showSignup()
-})
-/* ===== FAKE AUTH (FRONT ONLY) ===== */
-
-//const loginSubmit = document.getElementById("loginSubmit")
-
-//loginSubmit.addEventListener("click", () => {
-  //const username = document.getElementById("loginUser").value
-  // password = document.getElementById("loginPass").value
-
-  // یوزر تستی
-  //const TEST_USER = {
-    //username: "admin",
-    //password: "1234",
-   // role: "admin"
-  //}
-
-  //if (username === TEST_USER.username && password === TEST_USER.password) {
-    // React باید این کاربر را نمایش دهد
-    //localStorage.setItem(
-      //"currentUser",
-      //JSON.stringify(TEST_USER)
-    //)
-
-    // دیگر نیازی به window.location.href نیست
-    // به جای آن باید React در همان صفحه داشبورد را mount کند
-    //document.getElementById("dashboard-root").style.display = "block"
-    // یا در React: root.render(<App />) که login را تشخیص دهد
-  //} else {
-    //alert("Username or Password is incorrect ❌")
-  //}
-//})
-
+if(switchForm) {
+    switchForm.addEventListener("click", () => {
+      signupForm.classList.contains("active") ? showLogin() : showSignup()
+    })
+}
