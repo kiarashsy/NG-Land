@@ -3,40 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NGLAND</title>
+  <title>NGLAND | Creative Digital Team</title>
   <link rel="stylesheet" href="css/style.css" />
+  
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <style>
+    /* تنظیمات ضروری برای بک‌گراند ذرات متحرک */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-color: #0b0c0f; /* رنگ مشکی عمیق دیسکوردی */
+      z-index: -1; /* فرستادن به پشت تمام المان‌ها */
+      top: 0;
+      left: 0;
+    }
+    
+    /* حذف بک‌گراند سفید احتمالی بادی */
+    body {
+      margin: 0;
+      background: transparent;
+    }
+  </style>
 </head>
 <body>
 
-<!-- BACKGROUND -->
-<div class="bg-animated"></div>
+<div id="particles-js"></div>
 
-<!-- HEADER -->
 <header class="header">
   <div class="hero-logo">
     <img src="assets/logo.png" alt="NGLAND Logo">
   </div>
-
-  <!-- React روی این div دکمه Login را می‌سازد -->
   <div id="auth-buttons-react"></div>
 </header>
 
-
-
-<!-- HERO -->
-<header class="hero">
+<section class="hero">
   <div class="hero-logo">
     <img src="assets/logo.png" alt="NGLAND Logo">
   </div>
   <h1 class="logo-text">NGLAND</h1>
   <p class="tagline">Creative Digital Team</p>
   <a href="#team" class="scroll-btn">Meet the Team ↓</a>
-</header>
+</section>
 
-<!-- TEAM SECTION -->
 <section class="team-section" id="team">
   <div class="site-glow"></div>
   <h2>Our Team</h2>
@@ -47,7 +61,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   <p>© 2026 NGLAND Team. All rights reserved.</p>
   <div class="socials">
@@ -57,13 +70,6 @@
   </div>
 </footer>
 
-<!-- React Mount Point برای Login / Dashboard -->
-<div id="dashboard-root"></div>
-
-<!-- React Mount Point برای Login / Dashboard -->
-<div id="dashboard-root"></div>
-
-<!-- React Bundle -->
 <script src="js/main.js"></script>
 <script type="text/babel" src="dashboard/src/index.js"></script>
 </body>

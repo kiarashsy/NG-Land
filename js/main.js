@@ -286,3 +286,56 @@ if(switchForm) {
       signupForm.classList.contains("active") ? showLogin() : showSignup()
     })
 }
+  /* تنظیمات ذرات متحرک مشابه سایت ezconnect */
+particlesJS("particles-js", {
+    "particles": {
+      "number": { 
+        "value": 110, // کمی تعداد ذرات را بیشتر کردم تا شبکه شلوغ‌تر و جذاب‌تر شود
+        "density": { "enable": true, "value_area": 800 } 
+      },
+      "color": { "value": "#5865f2" },
+      "shape": { "type": "circle" },
+      "opacity": { 
+        "value": 0.6, 
+        "random": true, // تصادفی بودن شفافیت به کار عمق می‌دهد
+        "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false }
+      },
+      "size": { "value": 3, "random": true },
+      "line_linked": {
+        "enable": true,
+        "distance": 150,
+        "color": "#5865f2",
+        "opacity": 0.4,
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 1.5, // سرعت را کمی کم کردم تا حرکت ذرات "باکلاس‌تر" و آرام‌تر باشد
+        "direction": "none",
+        "random": true,
+        "straight": false,
+        "out_mode": "out",
+        "bounce": false,
+        "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 }
+      }
+    },
+    "interactivity": {
+      "detect_on": "window", // تغییر از canvas به window برای واکنش‌گرایی در کل صفحه
+      "events": {
+        "onhover": { 
+          "enable": true, 
+          "mode": "grab" // ایجاد شبکه متصل به موس
+        },
+        "onclick": { "enable": true, "mode": "push" },
+        "resize": true
+      },
+      "modes": {
+        "grab": { 
+          "distance": 220, // شعاع جذب را بیشتر کردم (دقیقاً مثل سایت ezconnect)
+          "line_linked": { "opacity": 0.8 } 
+        },
+        "push": { "particles_nb": 4 }
+      }
+    },
+    "retina_detect": true
+  });
