@@ -610,7 +610,7 @@ body::before {
 }
 
 /* انیمیشن حرکت آرام رنگ‌ها */
-@keyframes moveGradient {
+@keyframes moveGradient { 
     0% { transform: scale(1) translate(0, 0); }
     50% { transform: scale(1.1) translate(2%, 5%); }
     100% { transform: scale(1) translate(-2%, -3%); }
